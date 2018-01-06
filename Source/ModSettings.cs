@@ -13,7 +13,7 @@ namespace RTBricksDontVanish
 	public class ModSettings : Verse.ModSettings
 	{
 		// CONSTRUCTION:
-		// - Failure notification on/off (on in vanilla)
+		// + Failure notification on/off (on in vanilla)
 		// - Fail chance % (multiplier of vanilla)
 		// - Non-destructive failure chance % (of fail chance)
 		// + Failure material return % (50% in vanilla)
