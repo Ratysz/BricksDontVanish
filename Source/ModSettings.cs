@@ -22,6 +22,8 @@ namespace RTBricksDontVanish
 		// + Deconstruction material return % (75% in vanilla)
 		// + True 100% on/off (off in vanilla)
 
+		public static bool notifyOnFailure = true;
+
 		private static int failureMaterialReturnPercentage = Mathf.RoundToInt((float)(
 			typeof(GenLeaving).GetField("LeaveFraction_FailConstruction", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null)) * 100);
 		public static float FailureMaterialReturn
@@ -58,11 +60,14 @@ namespace RTBricksDontVanish
 			float failureMaterialReturn = FailureMaterialReturn;
 			float deconstructionMaterialReturn = DeconstructionMaterialReturn;
 			base.ExposeData();
-			Scribe_Values.Look(ref failureMaterialReturn, "failureMaterialReturn");
-			Scribe_Values.Look(ref deconstructionMaterialReturn, "deconstructionMaterialReturn");
-			Scribe_Values.Look(ref deconstructionTrue100, "deconstructionTrue100");
-			Log.Message("[BricksDontVanish]: settings initialized, failure material return is " + failureMaterialReturn
-				+ ", deconstruction material return is " + deconstructionMaterialReturn
+			Scribe_Values.Look(ref notifyOnFailure, "notifyOnFailure", notifyOnFailure);
+			Scribe_Values.Look(ref failureMaterialReturn, "failureMaterialReturn", FailureMaterialReturn);
+			Scribe_Values.Look(ref deconstructionMaterialReturn, "deconstructionMaterialReturn", DeconstructionMaterialReturn);
+			Scribe_Values.Look(ref deconstructionTrue100, "deconstructionTrue100", deconstructionTrue100);
+			Log.Message("[BricksDontVanish]: settings initialized, "
+				+ "failure notifications are " + (notifyOnFailure ? "enabled" : "disabled") + ", "
+				+ "failure material return is " + failureMaterialReturn + ", "
+				+ "deconstruction material return is " + deconstructionMaterialReturn
 				+ " (" + (deconstructionTrue100 ? "true" : "sub 1") + ")");
 			failureMaterialReturnPercentage = Mathf.RoundToInt(failureMaterialReturn * 100);
 			deconstructionMaterialReturnPercentage = Mathf.RoundToInt(deconstructionMaterialReturn * 100);
@@ -79,6 +84,10 @@ namespace RTBricksDontVanish
 			list.ColumnWidth = rect.width / 3;
 			list.Begin(rect);
 			list.Gap();
+			list.CheckboxLabeled(
+				"BricksDontVanish_NotifyOnFailureLabel".Translate(),
+				ref notifyOnFailure,
+				"BricksDontVanish_NotifyOnFailureTip".Translate());
 			{
 				string buffer = failureMaterialReturnPercentage.ToString();
 				Rect rectLine = list.GetRect(Text.LineHeight);
