@@ -24,24 +24,6 @@ namespace RTBricksDontVanish
 		{
 			__result = Math.Min(count, GenMath.RoundRandom(count * ModSettings.FailureMaterialReturn));
 		}
-
-		/*static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-		{
-			bool patched = false;
-			MethodInfo sneakyMethod = AccessTools.Property(typeof(ModSettings), nameof(ModSettings.FailureMaterialReturn)).GetGetMethod();
-			foreach (var instr in instructions.ToList())
-			{
-				if (!patched && instr.opcode == OpCodes.Ldc_R4)
-				{
-					patched = true;
-					yield return new CodeInstruction(OpCodes.Call, sneakyMethod);
-				}
-				else
-				{
-					yield return instr;
-				}
-			}
-		}*/
 	}
 
 	[HarmonyPatch]
@@ -65,40 +47,5 @@ namespace RTBricksDontVanish
 				__result = GenMath.RoundRandom(Mathf.Min(count - 1, count * ModSettings.DeconstructionMaterialReturn));
 			}
 		}
-
-		/*static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-		{
-			int patchState = 0;
-			MethodInfo sneakyMethod = AccessTools.Property(typeof(ModSettings), nameof(ModSettings.DeconstructionMaterialReturn)).GetGetMethod();
-			foreach (var instr in instructions.ToList())
-			{
-				switch (patchState)
-				{	// I'm almost sure inverting the state machine to have default as case 0 is more performant, but that's squeezing stones.
-					case 0:
-						if (instr.opcode == OpCodes.Ldarg_0)
-						{
-							patchState++;
-							yield return new CodeInstruction(OpCodes.Call, sneakyMethod);
-						}
-						else
-						{
-							yield return instr;
-						}
-						break;
-					case 1:
-						patchState++;
-						break;
-					case 2:
-						patchState++;
-						break;
-					case 3:
-						patchState++;
-						break;
-					default:
-						yield return instr;
-						break;
-				}
-			}
-		}*/
 	}
 }
