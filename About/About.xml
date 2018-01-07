@@ -4,5 +4,5 @@
 	<author>Ratys</author>
 	<url>https://ludeon.com/forums/index.php?topic=11272</url>
 	<targetVersion>0.18.1722</targetVersion>
-	<description>Because fuck failure, amiright.</description>
+	<description>Provides options to tweak amount of materials returned on construction failure or deconstruction, as well as the chance of said failure.</description>
 </ModMetaData>

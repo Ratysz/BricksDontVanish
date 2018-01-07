@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<BricksDontVanish_SettingsCategory>Bricks Don't Vanish</BricksDontVanish_SettingsCategory>
+	
+	<MessageConstructionFailedNoWaste>{1} failed while constructing {0}.</MessageConstructionFailedNoWaste>
+	
+	<BricksDontVanish_NotifyOnFailureLabel>Notify on failure</BricksDontVanish_NotifyOnFailureLabel>
+	<BricksDontVanish_NotifyOnFailureTip>RimWorld default: on
+Toggle notification whenever a colonist fails while constructing.</BricksDontVanish_NotifyOnFailureTip>
+	
+	<BricksDontVanish_FailureChanceScalingLabel>Failure rate multiplier</BricksDontVanish_FailureChanceScalingLabel>
+	<BricksDontVanish_FailureChanceScalingTip>RimWorld default: 100%
+Flat multiplier to default failure rate; doesn't affect stat inspection panel.
+Set to 0% to disable construction failure.</BricksDontVanish_FailureChanceScalingTip>
+	
+	<BricksDontVanish_MildFailureChanceLabel>Wasteless failure chance</BricksDontVanish_MildFailureChanceLabel>
+	<BricksDontVanish_MildFailureChanceTip>RimWorld default: 0%
+Sets the percentage of construction failures that will not result in loss of materials.
+No real effect if "Failure materials return" setting is 100%.</BricksDontVanish_MildFailureChanceTip>
+	
+	<BricksDontVanish_FailureMaterialReturnLabel>Failure materials return</BricksDontVanish_FailureMaterialReturnLabel>
+	<BricksDontVanish_FailureMaterialReturnTip>RimWorld default: 50%
+Scales amount of materials returned on construction failure.
+0% for none, 100% for full return, etc.</BricksDontVanish_FailureMaterialReturnTip>
+	
+	<BricksDontVanish_DeconstructionMaterialReturnLabel>Deconstruction mat. return</BricksDontVanish_DeconstructionMaterialReturnLabel>
+	<BricksDontVanish_DeconstructionMaterialReturnTip>RimWorld default: 75%
+Scales amount of materials returned on deconstruction.
+0% for none, 100% for "full" (refer to below setting) return, etc.</BricksDontVanish_DeconstructionMaterialReturnTip>
+	
+	<BricksDontVanish_DeconstructionTrue100Label>Override "-1" in formula</BricksDontVanish_DeconstructionTrue100Label>
+	<BricksDontVanish_DeconstructionTrue100Tip>RimWorld default: off
+By default, RimWorld will never return more than (construction cost)-1 of a material, while deconstructing only. This setting overrides that, allowing for complete returns.</BricksDontVanish_DeconstructionTrue100Tip>
+</LanguageData>

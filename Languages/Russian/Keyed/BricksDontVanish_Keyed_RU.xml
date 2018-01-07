@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<BricksDontVanish_SettingsCategory>Bricks Don't Vanish</BricksDontVanish_SettingsCategory>
+	
+	<MessageConstructionFailedNoWaste>{1} не удалось создать {0}.</MessageConstructionFailedNoWaste>
+	
+	<BricksDontVanish_NotifyOnFailureLabel>Сообщать о неудаче</BricksDontVanish_NotifyOnFailureLabel>
+	<BricksDontVanish_NotifyOnFailureTip>Обычное значение: включено
+Контролирует оповещения в левом верхнем углу экрана о провалах колонистов при стройке.</BricksDontVanish_NotifyOnFailureTip>
+	
+	<BricksDontVanish_FailureChanceScalingLabel>Множ. вероятности неудачи</BricksDontVanish_FailureChanceScalingLabel>
+	<BricksDontVanish_FailureChanceScalingTip>Обычное значение: 100%
+Линейный множитель вероятности неудачи при стройке; не влияет на характеристику "шанс успешного строительства" колонистов.
+При значении 0% строительство всегда успешно.</BricksDontVanish_FailureChanceScalingTip>
+	
+	<BricksDontVanish_MildFailureChanceLabel>Вероятность малой неудачи</BricksDontVanish_MildFailureChanceLabel>
+	<BricksDontVanish_MildFailureChanceTip>Обычное значение: 0%
+Устанавливает вероятность сохранить все материалы в случае неудачи при строительстве.
+Не имеет эффекта если "Материалы при неудаче" выставлены на 100%.</BricksDontVanish_MildFailureChanceTip>
+	
+	<BricksDontVanish_FailureMaterialReturnLabel>Материалы при неудаче</BricksDontVanish_FailureMaterialReturnLabel>
+	<BricksDontVanish_FailureMaterialReturnTip>Обычное значение: 50%
+Определяет количество возвращаемых после неудачи при строительстве материалов.
+0% не возвращает ничего, 100% возвращает все, и т.д.</BricksDontVanish_FailureMaterialReturnTip>
+	
+	<BricksDontVanish_DeconstructionMaterialReturnLabel>Материалы при разбирании</BricksDontVanish_DeconstructionMaterialReturnLabel>
+	<BricksDontVanish_DeconstructionMaterialReturnTip>Обычное значение: 75%
+Определяет количество возвращаемых при разборке построек материалов.
+0% не возвращает ничего, 100% возвращает все (-1, см. ниже), и т.д.</BricksDontVanish_DeconstructionMaterialReturnTip>
+	
+	<BricksDontVanish_DeconstructionTrue100Label>Обход "-1" в формуле</BricksDontVanish_DeconstructionTrue100Label>
+	<BricksDontVanish_DeconstructionTrue100Tip>Обычное значение: отключено
+При разборке построек (только при разборке) RimWorld никогда не возвращает более чем (затраты на постройку)-1 каждого материала. Эта настройка изменияет формулу, позволяя возвращать все использованные материалы.</BricksDontVanish_DeconstructionTrue100Tip>
+</LanguageData>

@@ -12,16 +12,6 @@ namespace RTBricksDontVanish
 {
 	public class ModSettings : Verse.ModSettings
 	{
-		// CONSTRUCTION:
-		// + Failure notification on/off (on in vanilla)
-		// + Fail chance % (multiplier of vanilla)
-		// + Non-destructive failure chance % (of fail chance)
-		// + Failure material return % (50% in vanilla)
-
-		// DECONSTRUCTION:
-		// + Deconstruction material return % (75% in vanilla)
-		// + True 100% on/off (off in vanilla)
-
 		public static bool notifyOnFailure = true;
 
 		private static int failureChanceScalingPercentage = 100;
@@ -125,8 +115,8 @@ namespace RTBricksDontVanish
 			{
 				string buffer = failureChanceScalingPercentage.ToString();
 				Rect rectLine = list.GetRect(Text.LineHeight);
-				Rect rectLeft = rectLine.LeftHalf().Rounded();
-				Rect rectRight = rectLine.RightHalf().Rounded();
+				Rect rectLeft = rectLine.LeftPartPixels(rectLine.width - Text.LineHeight * 4).Rounded();
+				Rect rectRight = rectLine.RightPartPixels(Text.LineHeight * 4).Rounded();
 				Rect rectPercent = rectRight.RightPartPixels(Text.LineHeight);
 				rectRight = rectRight.LeftPartPixels(rectRight.width - Text.LineHeight);
 				Widgets.DrawHighlightIfMouseover(rectLine);
@@ -135,14 +125,14 @@ namespace RTBricksDontVanish
 				Text.Anchor = TextAnchor.MiddleLeft;
 				Widgets.Label(rectLeft, "BricksDontVanish_FailureChanceScalingLabel".Translate());
 				Text.Anchor = anchorBuffer;
-				Widgets.TextFieldNumeric(rectRight, ref failureChanceScalingPercentage, ref buffer, 0, 100);
+				Widgets.TextFieldNumeric(rectRight, ref failureChanceScalingPercentage, ref buffer, 0, 10000);
 				Widgets.Label(rectPercent, "%");
 			}
 			{
 				string buffer = mildFailureChancePercentage.ToString();
 				Rect rectLine = list.GetRect(Text.LineHeight);
-				Rect rectLeft = rectLine.LeftHalf().Rounded();
-				Rect rectRight = rectLine.RightHalf().Rounded();
+				Rect rectLeft = rectLine.LeftPartPixels(rectLine.width - Text.LineHeight * 4).Rounded();
+				Rect rectRight = rectLine.RightPartPixels(Text.LineHeight * 4).Rounded();
 				Rect rectPercent = rectRight.RightPartPixels(Text.LineHeight);
 				rectRight = rectRight.LeftPartPixels(rectRight.width - Text.LineHeight);
 				Widgets.DrawHighlightIfMouseover(rectLine);
@@ -157,8 +147,8 @@ namespace RTBricksDontVanish
 			{
 				string buffer = failureMaterialReturnPercentage.ToString();
 				Rect rectLine = list.GetRect(Text.LineHeight);
-				Rect rectLeft = rectLine.LeftHalf().Rounded();
-				Rect rectRight = rectLine.RightHalf().Rounded();
+				Rect rectLeft = rectLine.LeftPartPixels(rectLine.width - Text.LineHeight * 4).Rounded();
+				Rect rectRight = rectLine.RightPartPixels(Text.LineHeight * 4).Rounded();
 				Rect rectPercent = rectRight.RightPartPixels(Text.LineHeight);
 				rectRight = rectRight.LeftPartPixels(rectRight.width - Text.LineHeight);
 				Widgets.DrawHighlightIfMouseover(rectLine);
@@ -173,8 +163,8 @@ namespace RTBricksDontVanish
 			{
 				string buffer = deconstructionMaterialReturnPercentage.ToString();
 				Rect rectLine = list.GetRect(Text.LineHeight);
-				Rect rectLeft = rectLine.LeftHalf().Rounded();
-				Rect rectRight = rectLine.RightHalf().Rounded();
+				Rect rectLeft = rectLine.LeftPartPixels(rectLine.width - Text.LineHeight * 4).Rounded();
+				Rect rectRight = rectLine.RightPartPixels(Text.LineHeight * 4).Rounded();
 				Rect rectPercent = rectRight.RightPartPixels(Text.LineHeight);
 				rectRight = rectRight.LeftPartPixels(rectRight.width - Text.LineHeight);
 				Widgets.DrawHighlightIfMouseover(rectLine);
