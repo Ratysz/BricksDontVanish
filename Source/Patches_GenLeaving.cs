@@ -22,7 +22,15 @@ namespace RTBricksDontVanish
 
 		static void Postfix(ref int __result, int count)
 		{
-			__result = Math.Min(count, GenMath.RoundRandom(count * ModSettings.FailureMaterialReturn));
+			if (Rand.Value < ModSettings.MildFailureChance)
+			{
+				__result = count;
+				ModSettings.volatile_ForceAltMessage = true;
+			}
+			else
+			{
+				__result = Math.Min(count, GenMath.RoundRandom(count * ModSettings.FailureMaterialReturn));
+			}
 		}
 	}
 

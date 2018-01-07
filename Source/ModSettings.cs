@@ -15,7 +15,7 @@ namespace RTBricksDontVanish
 		// CONSTRUCTION:
 		// + Failure notification on/off (on in vanilla)
 		// + Fail chance % (multiplier of vanilla)
-		// - Non-destructive failure chance % (of fail chance)
+		// + Non-destructive failure chance % (of fail chance)
 		// + Failure material return % (50% in vanilla)
 
 		// DECONSTRUCTION:
@@ -34,6 +34,19 @@ namespace RTBricksDontVanish
 			set
 			{
 				failureChanceScalingPercentage = Mathf.RoundToInt(FailureChanceScaling * 100);
+			}
+		}
+
+		private static int mildFailureChancePercentage = 0;
+		public static float MildFailureChance
+		{
+			get
+			{
+				return mildFailureChancePercentage / 100.0f;
+			}
+			set
+			{
+				mildFailureChancePercentage = Mathf.RoundToInt(MildFailureChance * 100);
 			}
 		}
 
@@ -66,24 +79,30 @@ namespace RTBricksDontVanish
 
 		public static bool deconstructionTrue100 = false;
 
+		public static bool volatile_ForceAltMessage = false;
+
 		public override void ExposeData()
 		{
 			float failureChanceScaling = FailureChanceScaling;
+			float mildFailureChance = MildFailureChance;
 			float failureMaterialReturn = FailureMaterialReturn;
 			float deconstructionMaterialReturn = DeconstructionMaterialReturn;
 			base.ExposeData();
 			Scribe_Values.Look(ref notifyOnFailure, "notifyOnFailure");
 			Scribe_Values.Look(ref failureChanceScaling, "failureChanceScaling");
+			Scribe_Values.Look(ref mildFailureChance, "mildFailureChance");
 			Scribe_Values.Look(ref failureMaterialReturn, "failureMaterialReturn");
 			Scribe_Values.Look(ref deconstructionMaterialReturn, "deconstructionMaterialReturn");
 			Scribe_Values.Look(ref deconstructionTrue100, "deconstructionTrue100");
 			Log.Message("[BricksDontVanish]: settings initialized, "
 				+ "failure notifications are " + (notifyOnFailure ? "enabled" : "disabled") + ", "
 				+ "failure chance scaling is " + failureChanceScaling + ", "
+				+ "mild failure chance is " + mildFailureChance + ", "
 				+ "failure material return is " + failureMaterialReturn + ", "
 				+ "deconstruction material return is " + deconstructionMaterialReturn
 				+ " (" + (deconstructionTrue100 ? "true" : "sub 1") + ")");
 			failureChanceScalingPercentage = Mathf.RoundToInt(failureChanceScaling * 100);
+			mildFailureChancePercentage = Mathf.RoundToInt(mildFailureChance * 100);
 			failureMaterialReturnPercentage = Mathf.RoundToInt(failureMaterialReturn * 100);
 			deconstructionMaterialReturnPercentage = Mathf.RoundToInt(deconstructionMaterialReturn * 100);
 		}
@@ -117,6 +136,22 @@ namespace RTBricksDontVanish
 				Widgets.Label(rectLeft, "BricksDontVanish_FailureChanceScalingLabel".Translate());
 				Text.Anchor = anchorBuffer;
 				Widgets.TextFieldNumeric(rectRight, ref failureChanceScalingPercentage, ref buffer, 0, 100);
+				Widgets.Label(rectPercent, "%");
+			}
+			{
+				string buffer = mildFailureChancePercentage.ToString();
+				Rect rectLine = list.GetRect(Text.LineHeight);
+				Rect rectLeft = rectLine.LeftHalf().Rounded();
+				Rect rectRight = rectLine.RightHalf().Rounded();
+				Rect rectPercent = rectRight.RightPartPixels(Text.LineHeight);
+				rectRight = rectRight.LeftPartPixels(rectRight.width - Text.LineHeight);
+				Widgets.DrawHighlightIfMouseover(rectLine);
+				TooltipHandler.TipRegion(rectLine, "BricksDontVanish_MildFailureChanceTip".Translate());
+				TextAnchor anchorBuffer = Text.Anchor;
+				Text.Anchor = TextAnchor.MiddleLeft;
+				Widgets.Label(rectLeft, "BricksDontVanish_MildFailureChanceLabel".Translate());
+				Text.Anchor = anchorBuffer;
+				Widgets.TextFieldNumeric(rectRight, ref mildFailureChancePercentage, ref buffer, 0, 100);
 				Widgets.Label(rectPercent, "%");
 			}
 			{
