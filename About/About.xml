@@ -2,7 +2,7 @@
 <ModMetaData>
 	<name>Bricks Don't Vanish</name>
 	<author>Ratys</author>
-	<url>https://ludeon.com/forums/index.php?topic=11272</url>
+	<url>https://ludeon.com/forums/index.php?topic=38078.0</url>
 	<targetVersion>0.18.1722</targetVersion>
 	<description>Provides options to tweak amount of materials returned on construction failure or deconstruction, as well as the chance of said failure.
 	
