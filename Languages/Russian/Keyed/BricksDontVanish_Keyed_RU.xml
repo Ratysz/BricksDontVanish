@@ -2,11 +2,9 @@
 <LanguageData>
 	<BricksDontVanish_SettingsCategory>Bricks Don't Vanish</BricksDontVanish_SettingsCategory>
 	
-	<MessageConstructionFailedNoWaste>{1} не удалось создать {0}.</MessageConstructionFailedNoWaste>
-	
 	<BricksDontVanish_NotifyOnFailureLabel>Сообщать о неудаче</BricksDontVanish_NotifyOnFailureLabel>
 	<BricksDontVanish_NotifyOnFailureTip>Обычное значение: включено
-Контролирует оповещения в левом верхнем углу экрана о провалах колонистов при стройке.</BricksDontVanish_NotifyOnFailureTip>
+Контролирует оповещения в левом верхнем углу экрана о провалах колонистов при стройке особо трудоемких зданий.</BricksDontVanish_NotifyOnFailureTip>
 	
 	<BricksDontVanish_FailureChanceScalingLabel>Множ. вероятности неудачи</BricksDontVanish_FailureChanceScalingLabel>
 	<BricksDontVanish_FailureChanceScalingTip>Обычное значение: 100%

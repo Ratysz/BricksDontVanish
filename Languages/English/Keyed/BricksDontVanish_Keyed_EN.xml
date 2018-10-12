@@ -2,11 +2,9 @@
 <LanguageData>
 	<BricksDontVanish_SettingsCategory>Bricks Don't Vanish</BricksDontVanish_SettingsCategory>
 	
-	<MessageConstructionFailedNoWaste>{1} failed while constructing {0}.</MessageConstructionFailedNoWaste>
-	
 	<BricksDontVanish_NotifyOnFailureLabel>Notify on failure</BricksDontVanish_NotifyOnFailureLabel>
 	<BricksDontVanish_NotifyOnFailureTip>RimWorld default: on
-Toggle notification whenever a colonist fails while constructing.</BricksDontVanish_NotifyOnFailureTip>
+Toggle notification in upper left corner whenever a colonist fails while constructing a work-heavy building.</BricksDontVanish_NotifyOnFailureTip>
 	
 	<BricksDontVanish_FailureChanceScalingLabel>Failure rate multiplier</BricksDontVanish_FailureChanceScalingLabel>
 	<BricksDontVanish_FailureChanceScalingTip>RimWorld default: 100%

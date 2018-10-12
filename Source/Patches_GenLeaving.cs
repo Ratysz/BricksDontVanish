@@ -17,9 +17,9 @@ namespace RTBricksDontVanish
 	{
 		static MethodBase TargetMethod()
 		{
-			return typeof(GenLeaving).GetMethods(AccessTools.all).FirstOrDefault(method => method.Name.Contains("m__5"));
+			return typeof(GenLeaving).GetMethods(AccessTools.all).FirstOrDefault(method => method.Name.Contains("m__6"));
 		}
-
+		
 		static void Postfix(ref int __result, int count)
 		{
 			if (Rand.Value < ModSettings.MildFailureChance)
