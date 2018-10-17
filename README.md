@@ -1,2 +1,2 @@
 # BricksDontVanish
-RimWorld mod; provides options to tweak amount of materials returned on construction failure or deconstruction, as well as the chance of said failure.
+RimWorld mod; see [About.xml](../master/About/About.xml) and [forum thread](https://ludeon.com/forums/index.php?topic=38078).
