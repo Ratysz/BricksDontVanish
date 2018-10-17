@@ -17,14 +17,6 @@ namespace RTBricksDontVanish
 
 		public Mod(ModContentPack content) : base(content)
 		{
-			Log.Message("---");
-			Log.Message("type: " + typeof(Frame));
-			foreach (var method in typeof(Frame).GetMethods(AccessTools.all))
-			{
-				Log.Message(" method: " + method);
-			}
-			Log.Message("---");
-
 			var harmony = HarmonyInstance.Create("io.github.ratysz.bricksdontvanish");
 			harmony.PatchAll(Assembly.GetExecutingAssembly());
 
