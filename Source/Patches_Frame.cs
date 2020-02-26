@@ -1,37 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using System.Reflection;
-using Harmony;
+﻿using Harmony;
 using RimWorld;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
 using Verse;
-using RimWorld.Planet;
 
 namespace RTBricksDontVanish
 {
 	[HarmonyPatch]
-	static class Patch_FailConstruction
+	internal static class Patch_FailConstruction
 	{
-		static MethodBase TargetMethod()
+		private static MethodBase TargetMethod()
 		{
 			return typeof(Frame).GetMethod(nameof(Frame.FailConstruction));
 		}
 
-		static void Postfix()
+		private static void Postfix()
 		{
 			ModSettings.volatile_ForceAltMessage = false;
 		}
 
-		static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+		private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
 		{
 			var markerMethod = AccessTools.Method(typeof(Messages), nameof(Messages.Message), new Type[] { typeof(string), typeof(LookTargets), typeof(MessageTypeDef), typeof(bool) });
 			var sneakyMethod = AccessTools.Method(typeof(Patch_FailConstruction), nameof(Patch_FailConstruction.ConditionalMessage));
 			return Transpilers.MethodReplacer(instructions, markerMethod, sneakyMethod);
 		}
 
-		static void ConditionalMessage(string text, LookTargets lookTargets, MessageTypeDef type, bool historical = true)
+		private static void ConditionalMessage(string text, LookTargets lookTargets, MessageTypeDef type, bool historical = true)
 		{
 			if (ModSettings.notifyOnFailure)
 			{

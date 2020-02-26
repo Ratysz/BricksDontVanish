@@ -1,26 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using System.Reflection;
-using System.Reflection.Emit;
-using Harmony;
+﻿using Harmony;
 using RimWorld;
-using Verse;
+using System;
+using System.Linq;
+using System.Reflection;
 using UnityEngine;
+using Verse;
 
 namespace RTBricksDontVanish
 {
 	[HarmonyPatch]
-	static class Patch_GBRLC_FailConstruction
+	internal static class Patch_GBRLC_FailConstruction
 	{
-		static MethodBase TargetMethod()
+		private static MethodBase TargetMethod()
 		{
 			return typeof(GenLeaving).GetMethods(AccessTools.all).FirstOrDefault(method => method.Name.Contains("m__6"));
 		}
-		
-		static void Postfix(ref int __result, int count)
+
+		private static void Postfix(ref int __result, int count)
 		{
 			if (Rand.Value < ModSettings.MildFailureChance)
 			{
@@ -35,16 +31,16 @@ namespace RTBricksDontVanish
 	}
 
 	[HarmonyPatch]
-	static class Patch_GBRLC_Deconstruct
+	internal static class Patch_GBRLC_Deconstruct
 	{
-		static MethodBase TargetMethod()
+		private static MethodBase TargetMethod()
 		{
 			return typeof(GenLeaving).GetNestedTypes(AccessTools.all)
 				.FirstOrDefault(type => type.FullName.Contains("GetBuildingResourcesLeaveCalculator"))
 				.GetMethods(AccessTools.all).FirstOrDefault(method => method.Name.Contains("m__0"));
 		}
 
-		static void Postfix(ref int __result, int count)
+		private static void Postfix(ref int __result, int count)
 		{
 			if (ModSettings.deconstructionTrue100)
 			{

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using RimWorld;
 using System.Reflection;
-using Verse;
-using RimWorld;
 using UnityEngine;
+using Verse;
 
 namespace RTBricksDontVanish
 {
@@ -15,6 +10,7 @@ namespace RTBricksDontVanish
 		public static bool notifyOnFailure = true;
 
 		private static int failureChanceScalingPercentage = 100;
+
 		public static float FailureChanceScaling
 		{
 			get
@@ -28,6 +24,7 @@ namespace RTBricksDontVanish
 		}
 
 		private static int mildFailureChancePercentage = 0;
+
 		public static float MildFailureChance
 		{
 			get
@@ -42,6 +39,7 @@ namespace RTBricksDontVanish
 
 		private static int failureMaterialReturnPercentage = Mathf.RoundToInt((float)(
 			typeof(GenLeaving).GetField("LeaveFraction_FailConstruction", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null)) * 100);
+
 		public static float FailureMaterialReturn
 		{
 			get
@@ -55,6 +53,7 @@ namespace RTBricksDontVanish
 		}
 
 		private static int deconstructionMaterialReturnPercentage = Mathf.RoundToInt(GenLeaving.LeaveFraction_DeconstructDefault * 100);
+
 		public static float DeconstructionMaterialReturn
 		{
 			get
