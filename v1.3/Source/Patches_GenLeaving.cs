@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using UnityEngine;
 using Verse;
 
@@ -43,13 +44,38 @@ namespace RTBricksDontVanish
 
 		private static void Postfix(ref int __result, int count)
 		{
-			if (ModSettings.deconstructionTrue100)
+			__result = Math.Min(count, GenMath.RoundRandom(count * ModSettings.DeconstructionMaterialReturn));
+		}
+	}
+
+	[HarmonyPatch]
+	internal static class Patch_DoLeavingsForTerrain
+	{
+		private static MethodBase TargetMethod()
+		{
+			return typeof(GenLeaving).GetMethod(nameof(GenLeaving.DoLeavingsFor), new Type[] { typeof(TerrainDef), typeof(IntVec3), typeof(Map) });
+		}
+
+		private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> _instructions)
+		{
+			int patchState = 0;
+			int index = 0;
+			var instructions = _instructions.ToList();
+			foreach (var instruction in instructions)
 			{
-				__result = Math.Min(count, GenMath.RoundRandom(count * ModSettings.DeconstructionMaterialReturn));
-			}
-			else
-			{
-				__result = GenMath.RoundRandom(Mathf.Min(count - 1, count * ModSettings.DeconstructionMaterialReturn));
+				index++;
+				if (patchState == 0 && instructions[index].opcode == OpCodes.Ldfld && (FieldInfo)instructions[index].operand == typeof(BuildableDef).GetField(nameof(BuildableDef.resourcesFractionWhenDeconstructed)))
+				{
+					patchState++;
+					yield return new CodeInstruction(OpCodes.Call, typeof(ModSettings).GetProperty(nameof(ModSettings.DeconstructionMaterialReturn)).GetGetMethod());
+					continue;
+				}
+				else if (patchState == 1)
+				{
+					patchState++;
+					continue;
+				}
+				yield return instruction;
 			}
 		}
 	}

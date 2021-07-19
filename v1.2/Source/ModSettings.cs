@@ -66,8 +66,6 @@ namespace RTBricksDontVanish
 			}
 		}
 
-		public static bool deconstructionTrue100 = false;
-
 		public static bool volatile_ForceAltMessage = false;
 
 		public override void ExposeData()
@@ -82,14 +80,12 @@ namespace RTBricksDontVanish
 			Scribe_Values.Look(ref mildFailureChance, "mildFailureChance");
 			Scribe_Values.Look(ref failureMaterialReturn, "failureMaterialReturn");
 			Scribe_Values.Look(ref deconstructionMaterialReturn, "deconstructionMaterialReturn");
-			Scribe_Values.Look(ref deconstructionTrue100, "deconstructionTrue100");
 			Log.Message("[BricksDontVanish]: settings initialized, "
 				+ "failure notifications are " + (notifyOnFailure ? "enabled" : "disabled") + ", "
 				+ "failure chance scaling is " + failureChanceScaling + ", "
 				+ "mild failure chance is " + mildFailureChance + ", "
 				+ "failure material return is " + failureMaterialReturn + ", "
-				+ "deconstruction material return is " + deconstructionMaterialReturn
-				+ " (" + (deconstructionTrue100 ? "true" : "sub 1") + ")");
+				+ "deconstruction material return is " + deconstructionMaterialReturn);
 			failureChanceScalingPercentage = Mathf.RoundToInt(failureChanceScaling * 100);
 			mildFailureChancePercentage = Mathf.RoundToInt(mildFailureChance * 100);
 			failureMaterialReturnPercentage = Mathf.RoundToInt(failureMaterialReturn * 100);
@@ -175,10 +171,6 @@ namespace RTBricksDontVanish
 				Widgets.TextFieldNumeric(rectRight, ref deconstructionMaterialReturnPercentage, ref buffer, 0, 100);
 				Widgets.Label(rectPercent, "%");
 			}
-			list.CheckboxLabeled(
-				"BricksDontVanish_DeconstructionTrue100Label".Translate(),
-				ref deconstructionTrue100,
-				"BricksDontVanish_DeconstructionTrue100Tip".Translate());
 			list.End();
 		}
 	}
