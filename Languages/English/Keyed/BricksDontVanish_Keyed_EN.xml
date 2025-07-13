@@ -22,7 +22,7 @@ Scales amount of materials returned on construction failure.
 0% for none, 100% for full return, etc.</BricksDontVanish_FailureMaterialReturnTip>
 	
 	<BricksDontVanish_DeconstructionMaterialReturnLabel>Deconstruction mat. return</BricksDontVanish_DeconstructionMaterialReturnLabel>
-	<BricksDontVanish_DeconstructionMaterialReturnTip>RimWorld default: 75%
+	<BricksDontVanish_DeconstructionMaterialReturnTip>RimWorld default: 50%
 Scales amount of materials returned on deconstruction.
 0% for none, 100% for "full" (refer to below setting) return, etc.</BricksDontVanish_DeconstructionMaterialReturnTip>
 	

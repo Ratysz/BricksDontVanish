@@ -22,7 +22,7 @@
 0% не возвращает ничего, 100% возвращает все, и т.д.</BricksDontVanish_FailureMaterialReturnTip>
 	
 	<BricksDontVanish_DeconstructionMaterialReturnLabel>Материалы при разбирании</BricksDontVanish_DeconstructionMaterialReturnLabel>
-	<BricksDontVanish_DeconstructionMaterialReturnTip>Обычное значение: 75%
+	<BricksDontVanish_DeconstructionMaterialReturnTip>Обычное значение: 50%
 Определяет количество возвращаемых при разборке построек материалов.
 0% не возвращает ничего, 100% возвращает все (-1, см. ниже), и т.д.</BricksDontVanish_DeconstructionMaterialReturnTip>
 	
